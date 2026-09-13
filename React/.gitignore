@@ -28,3 +28,6 @@ dist-ssr
 *.avi
 *.mov
 *.mkv
+
+# Claude Code local configuration
+.claude/
