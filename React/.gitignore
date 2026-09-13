@@ -31,3 +31,6 @@ dist-ssr
 
 # Claude Code local configuration
 .claude/
+
+# Local documentation (development only)
+docs/
