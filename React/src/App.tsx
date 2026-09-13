@@ -16,6 +16,11 @@ function setTodoComplete(id: number, completed: boolean) {
 function addtodo(title: string) {
   setTodos(prevTodos => [{id: prevTodos.length + 1, title, completed: false}, ...prevTodos]);
 }
+
+function deleteTodo(id: number) {
+  setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+}
+
   return (
     <main className="space-y-10 py-10 px-2">
     <h1 className="text-center text-3xl font-bold underline">
@@ -26,7 +31,7 @@ function addtodo(title: string) {
     />  
     <div className="max-w-md mx-auto">
       { todos.map(todo =>(
-      <TodoItem key={todo.id} todo={todo} onCompleteChange={setTodoComplete}/>
+      <TodoItem key={todo.id} todo={todo} onCompleteChange={setTodoComplete} onDelete={deleteTodo}/>
       ))}
     </div>
     </main>
