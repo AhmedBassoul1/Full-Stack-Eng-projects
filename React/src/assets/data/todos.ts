@@ -4,7 +4,7 @@ export const dummydata: Todo[] = [
   {
     id: 1,
     title: "Learn React",
-    completed: false,
+    completed: true,
   },
   {
     id: 2,

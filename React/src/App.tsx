@@ -1,17 +1,27 @@
+import { useState } from "react";
 import { dummydata } from "./assets/data/todos";
+import TodoItem from "./components/todoItem";
+import AddNewTodo from "./components/addnewtodo";
 
 function App() {
 
+  const [todos, setTodos] = useState(dummydata);
+
+function setTodoComplete(id: number, completed: boolean) {
+  setTodos(prevTodos => prevTodos.map(todo =>
+    todo.id === id ? { ...todo, completed } : todo
+  ));
+}
+
   return (
-    <main className="py-10 px-2">
+    <main className="space-y-10 py-10 px-2">
     <h1 className="text-center text-3xl font-bold underline">
       My Todo List
-    </h1>  
+    </h1>
+    <AddNewTodo/>  
     <div className="max-w-md mx-auto">
-      { dummydata.map(todo =>(
-        <p key={todo.id} className="bg-gray-200 p-4 rounded mb-2 text-lg">
-          {todo.title}
-        </p>
+      { todos.map(todo =>(
+      <TodoItem key={todo.id} todo={todo} onCompleteChange={setTodoComplete}/>
       ))}
     </div>
     </main>
